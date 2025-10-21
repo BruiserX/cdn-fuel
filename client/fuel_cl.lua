@@ -119,6 +119,7 @@ local function HandleFuelConsumption(vehicle)
 	end
 end
 
+
 local function CanAfford(price, purchasetype)
 	local purchasetype = purchasetype
 	if purchasetype == "bank" then Money = QBCore.Functions.GetPlayerData().money['bank'] elseif purchasetype == 'cash' then Money = QBCore.Functions.GetPlayerData().money['cash'] end

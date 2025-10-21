@@ -2,12 +2,12 @@ Config = {}
 Config.FuelDebug = false -- Used for debugging, although there are not many areas in yet (Default: false) + Enables Setfuel Commands (0, 50, 100). 
 Config.PolyDebug = false -- Enables Polyzone Debugging to see PolyZones!
 Config.ShowNearestGasStationOnly = true -- When enabled, only the nearest gas stations will be shown on the map.
-Config.LeaveEngineRunning = false -- When true, the vehicle's engine will be left running upon exit if the player *HOLDS* F.
+Config.LeaveEngineRunning = true -- When true, the vehicle's engine will be left running upon exit if the player *HOLDS* F.
 Config.VehicleBlowUp = true -- When true, there will be a configurable chance of the vehicle blowing up, if you fuel while the engine is on.
-Config.BlowUpChance = 5 -- Percentage for Chance of Engine Explosion (Default: 5% or 5)
-Config.CostMultiplier = 3 -- Amount to multiply 1 by. This indicates fuel price. (Default: $3.0/l or 3.0)
-Config.GlobalTax = 15.0 -- The tax, in %, that people will be charged at the pump. (Default: 15% or 15.0)
-Config.FuelNozzleExplosion = false -- When true, it enables the fuel pump exploding when players run away with the nozzle. Highly recommeded to be false.
+Config.BlowUpChance = 51 -- Percentage for Chance of Engine Explosion (Default: 5% or 5)
+Config.CostMultiplier = 4 -- Amount to multiply 1 by. This indicates fuel price. (Default: $3.0/l or 3.0)
+Config.GlobalTax = 20.0 -- The tax, in %, that people will be charged at the pump. (Default: 15% or 15.0)
+Config.FuelNozzleExplosion = true -- When true, it enables the fuel pump exploding when players run away with the nozzle. Highly recommeded to be false.
 Config.FuelDecor = "_FUEL_LEVEL" -- Do not touch! (Default: "_FUEL_LEVEL")
 Config.RefuelTime = 600 -- Highly recommended to leave at 600. This value will be multiplied times the amount the player is fueling for the progress bar and cancellation logic! DON'T GO BELOW 250, performance WILL drop!
 Config.FuelTargetExport = false -- DO NOT USE WITH OX_TARGET! This is only used to fix this qb-target issue: https://github.com/CodineDev/cdn-fuel/issues/3. <br> <br> If you don't have this issue and haven't installed this exports in qb-target, then this should be false. Otherwise there will be an error.
@@ -51,17 +51,17 @@ Config.EmergencyServicesDiscount = {
 }
 Config.Core = 'qb-core' -- Change this to your core resources (Ex: 'qbx-core' | 'qb-core'), must be qb based!
 Config.Ox = {
-    Inventory = false, -- Uses OX_Inventory's metadata instead of QB-Inventory's.
-    Menu = false, -- Uses OX Libraries instead of qb-menu.
-    Input = false, -- Uses Ox Input Dialog instead of qb-input.
+    Inventory = true, -- Uses OX_Inventory's metadata instead of QB-Inventory's.
+    Menu = true, -- Uses OX Libraries instead of qb-menu.
+    Input = true, -- Uses Ox Input Dialog instead of qb-input.
     DrawText = false, -- Uses Ox DrawText instead of qb-core DrawText.
     Progress = false -- Uses Ox ProgressBar instead of progressbar.
 }
-Config.TargetResource = "qb-target" -- Supported: { 'qb-target', 'ox_target'} -- Others must use the same format as QB-Target or manual configuration is required.
-Config.PumpHose = false -- If true, it creates a hose from the pump to the nozzle the client is holding, to give it a more realistic feel.
+Config.TargetResource = "ox_target" -- Supported: { 'qb-target', 'ox_target'} -- Others must use the same format as QB-Target or manual configuration is required.
+Config.PumpHose = true -- If true, it creates a hose from the pump to the nozzle the client is holding, to give it a more realistic feel.
 Config.RopeType = { -- Options: 1-2-3-4-5; 1: Khaki Color, Kind of Thick, 2: Very Thick Khaki Rope, 3: Very Thick Black Rope, 4: Very Thin Black Rope, 5: Same as 3
-    ['fuel'] = 1,
-    ['electric'] = 1,
+    ['fuel'] = 3,
+    ['electric'] = 4,
 }
 Config.FaceTowardsVehicle = true -- Ped will turn towards the entity's boot bone for refueling, sometimes can result in incorrect nozzle placement when refueling.
 Config.VehicleShutoffOnLowFuel = { -- If enabled, vehicles will turn off when the reach 0 fuel. This works well in conjuction with disallowing people to turn on a vehicle with 0 fuel.
@@ -90,7 +90,7 @@ Config.SyphonDispatchSystem = "ps-dispatch" -- Options: "ps-dispatch", "qb-dispa
 Config.UseJerryCan = true -- Enable the Jerry Can functionality. Will only work if properly installed.
 Config.JerryCanCap = 50 -- Maximum amount (in L) the jerrycan can fit! (Default: 50L)
 Config.JerryCanPrice = 200 -- The price of a jerry can, not including tax.
-Config.JerryCanGas = 25 -- The amount of Gas that the Jerry Can you purchase comes with. This should not be bigger that your Config.JerryCanCap!
+Config.JerryCanGas = 25 -- The amount of Gas that the Jerrycan you purchase comes with. This should not be bigger that your Config.JerryCanCap!
 
 -- Animations --
 Config.StealAnimDict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@'-- Used for Syphoning
@@ -101,7 +101,7 @@ Config.RefuelAnimation = "gar_ig_5_filling_can" -- This is for refueling and cha
 Config.RefuelAnimationDictionary = "timetable@gardener@filling_can" -- This is for refueling and charging.
 
 --- Player Owned Gas (Gasoline) Ergonomic Refueling Stations (Poggers) ---
-Config.PlayerOwnedGasStationsEnabled = true -- When true, peds will be located at all gas stations, and players will be able to talk with peds & purchase gas stations, having to manage fuel supplies.
+Config.PlayerOwnedGasStationsEnabled = false -- When true, peds will be located at all gas stations, and players will be able to talk with peds & purchase gas stations, having to manage fuel supplies.
 Config.StationFuelSalePercentage = 0.65 -- % of sales that the station gets. If they sell 4 Liters of Gas for $16 (not including taxes), they will get 16*Config.StationFuelSalePercentage back from the sale. Treat this as tax, also, it balances the profit margins a bit.
 Config.EmergencyShutOff = false -- When true, players can walk up to the ped and shut off the pumps at a gas station. While false, this option is disabled, because it can obviously be an issue. 
 Config.UnlimitedFuel = false -- When true, the fuel stations will not require refuelling by gas station owners, this is for the early stages of implementation.
@@ -119,7 +119,7 @@ Config.OneStationPerPerson = true -- This prevents players that already own one 
 
 --- Electric Vehicles
 Config.ElectricVehicleCharging = true -- When true, electric vehicles will actually consume resources and decrease 'Fuel / Battery' while driving. This means players will have to recharge their vehicle!
-Config.ElectricChargingPrice = 4 -- Per "KW". This value is multiplied times the amount of electricity someone put into their vehicle, to constitute the final cost of the charge. Players whom own the gas station will not recieve the money from electric charging.
+Config.ElectricChargingPrice = 5 -- Per "KW". This value is multiplied times the amount of electricity someone put into their vehicle, to constitute the final cost of the charge. Players whom own the gas station will not recieve the money from electric charging.
 Config.ElectricVehicles = { -- List of Electric Vehicles in the Base Game.
     ["surge"] = {
         isElectric = true,
@@ -169,9 +169,35 @@ Config.ElectricVehicles = { -- List of Electric Vehicles in the Base Game.
     ["dilettante"] = {
         isElectric = true,
     },
+    ["dilettante2"] = {
+        isElectric = true,
+    },
     ["khamelion"] = {
         isElectric = true,
     },
+    ["gbeon"] = {
+        isElectric = true,
+    },
+    ["gblod4"] = {
+        isElectric = true,
+    },
+    ["gbneonct"] = {
+        isElectric = true,
+    },
+    ["gbsapphire"] = {
+        isElectric = true,
+    },
+    ["gbstarlight"] = {
+        isElectric = true,
+    },
+    ["gbpolstarlight"] = {
+        isElectric = true,
+    },
+    ["gbtaxistarlight"] = {
+        isElectric = true,
+    },
+    
+
 }
 Config.ElectricSprite = 620 -- This is for when the player is in an electric charger, the blips with change to this sprite. (Sprite with a car with a bolt going through it: 620)
 Config.ElectricChargerModel = true -- If you wish, you can set this to false to add your own props, or use a ymap for the props instead.
@@ -185,37 +211,37 @@ Config.NoFuelUsage = { -- This is for you to put vehicles that you don't want to
 }
 
 Config.Classes = { -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
-	[0] = 1.0, -- Compacts
-	[1] = 1.0, -- Sedans
+	[0] = 0.7, -- Compacts
+	[1] = 0.9, -- Sedans
 	[2] = 1.0, -- SUVs
-	[3] = 1.0, -- Coupes
+	[3] = 0.8, -- Coupes
 	[4] = 1.0, -- Muscle
 	[5] = 1.0, -- Sports Classics
-	[6] = 1.0, -- Sports
-	[7] = 1.0, -- Super
-	[8] = 1.0, -- Motorcycles
+	[6] = 1.05, -- Sports
+	[7] = 1.1, -- Super
+	[8] = 0.7, -- Motorcycles
 	[9] = 1.0, -- Off-road
 	[10] = 1.0, -- Industrial
-	[11] = 1.0, -- Utility
-	[12] = 1.0, -- Vans
+	[11] = 1.15, -- Utility
+	[12] = 1.15, -- Vans
 	[13] = 0.0, -- Cycles
-	[14] = 1.0, -- Boats
-	[15] = 1.0, -- Helicopters
-	[16] = 1.0, -- Planes
-	[17] = 1.0, -- Service
-	[18] = 1.0, -- Emergency
-	[19] = 1.0, -- Military
+	[14] = 0.5, -- Boats
+	[15] = 9.5, -- Helicopters
+	[16] = 9.5, -- Planes
+	[17] = 0.7, -- Service
+	[18] = 0.8, -- Emergency
+	[19] = 0.9, -- Military
 	[20] = 1.0, -- Commercial
 	[21] = 1.0, -- Trains
 }
 
 Config.FuelUsage = { -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second
-	[1.0] = 1.3,
-	[0.9] = 1.1,
+	[1.0] = 1.2,
+	[0.9] = 1.05,
 	[0.8] = 0.9,
 	[0.7] = 0.8,
-	[0.6] = 0.7,
-	[0.5] = 0.5,
+	[0.6] = 0.65,
+	[0.5] = 0.4,
 	[0.4] = 0.3,
 	[0.3] = 0.2,
 	[0.2] = 0.1,
@@ -230,10 +256,10 @@ Config.AirAndWaterVehicleFueling = {
         [1] = {
             ['PolyZone'] = {
                 ['coords'] = {
-                    vector2(439.96, -973.0),
-                    vector2(458.09, -973.04),
-                    vector2(458.26, -989.47),
-                    vector2(439.58, -989.94),
+                    vec2(470.78, -979.43),
+                    vec2(486.53, -979.43),
+                    vec2(486.52, -992.87),
+                    vec2(470.24, -993.39),
                 },
                 ['minmax'] = {
                     ['min'] = 40,
@@ -251,7 +277,7 @@ Config.AirAndWaterVehicleFueling = {
             },
             ['prop'] = {
                 ['model'] = 'prop_gas_pump_1d',
-                ['coords'] = vector4(442.08, -977.15, 42.69, 269.52),
+                ['coords'] = vec4(470.27, -986.75, 43.95, 267.15),
             }
         },
         -- Pillbox Hospital
@@ -1408,33 +1434,32 @@ Config.GasStations = { -- Configuration options for various gas station related 
         electricchargercoords = vector4(-341.63, -1459.39, 29.76, 271.73),
         label = "Alta Street Globe Oil",
     },
-    --[[
-    [28] = { -- Gabz Ottos Autos Location, Line In If Needed.
-        zones = {
-            vector2(794.27795410156, -802.88677978516),
-            vector2(794.19073486328, -784.70434570313),
-            vector2(834.78155517578, -784.63250732422),
-            vector2(843.86151123047, -801.45819091797),
-            vector2(823.64239501953, -801.69488525391),
-            vector2(811.66571044922, -803.15899658203)
-        },
-        minz = 26.0,
-        maxz = 27.0,
-        pedmodel = "a_m_m_indian_01",
-        cost = 100000,
-        shutoff = false,
-        pedcoords = {
-            x = 819.1,
-            y = -774.63,
-            z = 25.23,
-            h = 83.86,
-        },
-        electriccharger = nil,
-        electricchargercoords = vector4(837.7554, -793.623, 25.23, 105.22),
-        label = "Ottos Autos Globe Oil",
-    },
-    ]]
-    --[[
+    
+    -- [28] = { -- Gabz Ottos Autos Location, Line In If Needed.
+    --     zones = {
+    --         vector2(794.27795410156, -802.88677978516),
+    --         vector2(794.19073486328, -784.70434570313),
+    --         vector2(834.78155517578, -784.63250732422),
+    --         vector2(843.86151123047, -801.45819091797),
+    --         vector2(823.64239501953, -801.69488525391),
+    --         vector2(811.66571044922, -803.15899658203)
+    --     },
+    --     minz = 26.0,
+    --     maxz = 27.0,
+    --     pedmodel = "a_m_m_indian_01",
+    --     cost = 100000,
+    --     shutoff = false,
+    --     pedcoords = {
+    --         x = 819.1,
+    --         y = -774.63,
+    --         z = 25.23,
+    --         h = 83.86,
+    --     },
+    --     electriccharger = nil,
+    --     electricchargercoords = vector4(837.7554, -793.623, 25.23, 105.22),
+    --     label = "Ottos Autos Globe Oil",
+    -- },
+    
     [29] = { -- Car Meet Location, Line In If Needed.
         zones = {
             vector2(968.98, -1754.89),
@@ -1455,9 +1480,9 @@ Config.GasStations = { -- Configuration options for various gas station related 
         },
         electriccharger = nil,
         electricchargercoords = vector4(971.98, -1746.81, 20.03, 177.17),
-        label = "H&O Exports",
+        label = "Underground",
     },
-    ]]
+
     --[[ Example of a New Location
     [29] = {
         zones = {
